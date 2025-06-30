@@ -1,4 +1,4 @@
-module github.com/theplant/linter/mustreceive
+module github.com/qor5/linter
 
 go 1.23.0
 
