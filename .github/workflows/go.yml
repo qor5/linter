@@ -30,8 +30,12 @@ jobs:
 
       - name: Download test dependencies
         run: |
-          cd errhandle/testdata && go mod download
-          cd ../../mustreceive/testdata && go mod download
+          for dir in errhandle/testdata mustreceive/testdata; do
+            if [[ -f "$dir/go.mod" ]]; then
+              echo "Downloading dependencies for $dir"
+              cd "$dir" && go mod download && cd -
+            fi
+          done
 
       - name: Test
         run: go test -p=1 -count=1 -failfast -coverprofile=coverage.txt -coverpkg=github.com/qor5/... ./...
