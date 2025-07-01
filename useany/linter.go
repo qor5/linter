@@ -8,7 +8,7 @@ import (
 )
 
 func init() {
-	register.Plugin("userany", New)
+	register.Plugin("useany", New)
 }
 
 type Settings struct {
