@@ -28,6 +28,9 @@ jobs:
       - name: Build
         run: go build -v ./...
 
+      - name: Download test dependencies
+        run: cd errhandle/testdata && go mod download
+
       - name: Test
         run: go test -p=1 -count=1 -failfast -coverprofile=coverage.txt -coverpkg=github.com/qor5/... ./...
         env:
