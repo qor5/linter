@@ -1,0 +1,11 @@
+version: v2.1.5
+plugins:
+  - module: 'github.com/qor5/linter'
+    import: 'github.com/qor5/linter/useany'
+    path: '.'
+  - module: 'github.com/qor5/linter'
+    import: 'github.com/qor5/linter/errhandle'
+    path: '.'
+  - module: 'github.com/qor5/linter'
+    import: 'github.com/qor5/linter/mustreceive'
+    path: '.'

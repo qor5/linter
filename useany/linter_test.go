@@ -6,7 +6,7 @@ import (
 	"golang.org/x/tools/go/analysis/analysistest"
 )
 
-func TestModernTypeLinter(t *testing.T) {
+func TestUseanyLinter(t *testing.T) {
 	// Create linter instance
 	linter := &Linter{settings: Settings{}}
 

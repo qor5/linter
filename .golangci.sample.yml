@@ -1,0 +1,15 @@
+linters-settings:
+  custom:
+    useany:
+      description: 'Check for interface{} that can be replaced with any'
+    errhandle:
+      description: 'Check for proper error handling'
+    mustreceive:
+      description: 'Check for functions that must receive their return values'
+
+linters:
+  enable:
+    - useany
+    - errhandle
+    - mustreceive
+  disable-all: false 

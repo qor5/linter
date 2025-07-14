@@ -6,8 +6,10 @@ COMMAND=${1:-fix-lint}
 
 cd /app
 
+echo "📦 Using local Go mod cache, skipping go mod download..."
+
 # Use custom golangci-lint - fail if not available
-GOLANGCI_LINT_CMD="golangci-lint-custom"
+GOLANGCI_LINT_CMD="qor5-linter"
 CONFIG_FILE=".golangci.yml"
 
 if ! command -v "$GOLANGCI_LINT_CMD" &> /dev/null; then
@@ -16,7 +18,7 @@ if ! command -v "$GOLANGCI_LINT_CMD" &> /dev/null; then
     exit 1
 fi
 
-echo "✅ Using custom golangci-lint with mustreceive plugin"
+echo "✅ Using custom golangci-lint with custom plugins"
 echo "Using: $GOLANGCI_LINT_CMD with config: $CONFIG_FILE"
 
 case "$COMMAND" in
