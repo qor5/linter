@@ -1,4 +1,4 @@
-# This workflow willect
+# This workflow will build and test the project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
 
 name: Go
@@ -26,7 +26,7 @@ jobs:
           cache: true
 
       - name: Build
-        run: go -v ./...
+        run: go build -v ./...
 
       - name: Download test dependencies
         run: |
