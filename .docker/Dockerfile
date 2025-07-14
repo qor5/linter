@@ -11,10 +11,14 @@ RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/i
 # Create work directory
 WORKDIR /build
 
-# Copy only the plugin-related files
-COPY .custom-gcl.yml .
-COPY linter/ ./linter/
+# Copy Go module files first for better layer caching
 COPY go.mod go.sum ./
+
+# Download Go modules
+RUN go mod download
+
+# Copy the entire source code (needed for custom plugins)
+COPY . .
 
 # Build custom golangci-lint with our plugin
 RUN echo "Building custom golangci-lint with custom plugins..." && \
@@ -31,13 +35,13 @@ RUN apk add --no-cache bash sed grep git
 RUN git config --global --add safe.directory /app
 
 # Copy the custom golangci-lint binary from builder stage
-COPY --from=builder /build/custom-gcl /usr/local/bin/golangci-lint-custom
+COPY --from=builder /build/custom-gcl /usr/local/bin/qor5-linter
 
 # Create working directory
 WORKDIR /app
 
 # Add entrypoint script
-COPY linter/.docker/entrypoint.sh /entrypoint.sh
+COPY .docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"] 

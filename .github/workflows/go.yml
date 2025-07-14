@@ -1,4 +1,4 @@
-# This workflow will build a golang project
+# This workflow willect
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
 
 name: Go
@@ -14,7 +14,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-then-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
           cache: true
 
       - name: Build
-        run: go build -v ./...
+        run: go -v ./...
 
       - name: Download test dependencies
         run: |
@@ -39,5 +39,3 @@ jobs:
 
       - name: Test
         run: go test -p=1 -count=1 -failfast -coverprofile=coverage.txt -coverpkg=github.com/qor5/... ./...
-        env:
-          GO_TESTING: "TRUE"
