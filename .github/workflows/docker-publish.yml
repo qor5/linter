@@ -5,6 +5,8 @@ on:
     tags:
       - 'v*.*.*'      # Triggers on semantic version tags like v1.0.0
       - 'v*.*.*-*'    # Supports pre-release versions like v1.0.0-alpha.1
+  release:
+    types: [published]  # Triggers when a release is published
 
 permissions:
   contents: read
@@ -38,6 +40,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=ref,event=tag
+            type=semver,pattern={{version}}
             type=match,pattern=v(\d+\.\d+\.\d+)$,value=latest
           flavor: |
             latest=false
