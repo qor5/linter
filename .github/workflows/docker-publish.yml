@@ -13,8 +13,8 @@ permissions:
   id-token: write  # Required for AWS OIDC authentication
 
 env:
-  REGISTRY_ALIAS: qor5
-  REPOSITORY: linter
+  REGISTRY_ALIAS: public.ecr.aws
+  REPOSITORY: qor5/linter
 
 jobs:
   build-and-push:
@@ -29,7 +29,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::YOUR_ACCOUNT_ID:role/github-actions-ecr-role  # TODO: Replace YOUR_ACCOUNT_ID with your AWS account ID
+          role-to-assume: arn:aws:iam::475867236237:role/qor5-test-github-actions-build-public-images
           aws-region: us-east-1  # ECR Public is only available in us-east-1
 
       - name: Login to Amazon ECR Public
@@ -48,7 +48,7 @@ jobs:
           # Build and tag with version tag
           docker build -f .docker/Dockerfile -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
-          
+
           # Also tag as latest for release versions (not pre-release)
           if [[ "$IMAGE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             docker tag $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:latest
@@ -56,4 +56,4 @@ jobs:
             echo "✅ Pushed latest tag for release version $IMAGE_TAG"
           else
             echo "ℹ️  Skipped latest tag for pre-release version $IMAGE_TAG"
-          fi 
+          fi
