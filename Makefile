@@ -1,4 +1,5 @@
-IMAGE_NAME = qor5-linter
+OWNER = qor5
+IMAGE_NAME = linter
 
 .PHONY: build-docker
 
@@ -10,4 +11,4 @@ build-docker:
 		exit 1; \
 	}; \
 	echo "Building Docker image with tag: $$TAG"; \
-	docker buildx build -f .docker/Dockerfile -t $(IMAGE_NAME):$$TAG .
+	docker buildx build -f .docker/Dockerfile -t $(OWNER)/$(IMAGE_NAME):$$TAG .
