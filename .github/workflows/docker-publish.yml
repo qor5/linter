@@ -2,6 +2,8 @@ name: Build and Push Docker Image to AWS ECR Public
 
 on:
   push:
+    branches:
+      - push-image-to-ecr # TODO remove after test
     tags:
       - 'v*.*.*'      # Triggers on semantic version tags like v1.0.0
       - 'v*.*.*-*'    # Supports pre-release versions like v1.0.0-alpha.1
