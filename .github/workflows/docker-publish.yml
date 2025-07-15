@@ -15,8 +15,8 @@ permissions:
   id-token: write  # Required for AWS OIDC authentication
 
 env:
-  REGISTRY_ALIAS: public.ecr.aws
-  REPOSITORY: qor5/linter
+  REGISTRY_ALIAS: qor5
+  REPOSITORY: linter
 
 jobs:
   build-and-push:
