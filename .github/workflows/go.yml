@@ -30,7 +30,7 @@ jobs:
 
       - name: Download test dependencies
         run: |
-          for dir in errhandle/testdata mustreceive/testdata; do
+          for dir in errhandle/testdata mustreceive/testdata gormlint/testdata useany/testdata; do
             if [[ -f "$dir/go.mod" ]]; then
               echo "Downloading dependencies for $dir"
               cd "$dir" && go mod download && cd -
