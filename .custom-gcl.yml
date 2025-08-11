@@ -9,3 +9,6 @@ plugins:
   - module: 'github.com/qor5/linter'
     import: 'github.com/qor5/linter/mustreceive'
     path: '.'
+  - module: 'github.com/qor5/linter'
+    import: 'github.com/qor5/linter/gormlint'
+    path: '.'
