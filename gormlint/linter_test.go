@@ -6,7 +6,7 @@ import (
 	"golang.org/x/tools/go/analysis/analysistest"
 )
 
-func TestGormFirstArgs(t *testing.T) {
+func TestGormRules(t *testing.T) {
 	linter := &Linter{settings: Settings{}}
 	analyzers, err := linter.BuildAnalyzers()
 	if err != nil {
