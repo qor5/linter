@@ -1,5 +1,5 @@
 # Build stage - for building custom golangci-lint
-FROM golang:1.23-alpine AS builder
+FROM golang:1.24.9-alpine AS builder
 
 # Install required build tools
 RUN apk add --no-cache git make curl bash
@@ -26,7 +26,7 @@ RUN echo "Building custom golangci-lint with custom plugins..." && \
     echo "Custom golangci-lint built successfully"
 
 # Runtime stage - final image with Go environment
-FROM golang:1.23-alpine
+FROM golang:1.24.9-alpine
 
 # Install runtime dependencies
 RUN apk add --no-cache bash sed grep git
