@@ -1,8 +1,6 @@
 module github.com/qor5/linter
 
-go 1.23.0
-
-toolchain go1.23.4
+go 1.24.9
 
 require (
 	github.com/golangci/plugin-module-register v0.1.2
