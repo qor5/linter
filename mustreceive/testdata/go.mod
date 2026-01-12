@@ -1,6 +1,6 @@
 module testdata
 
-go 1.25
+go 1.25.5
 
 require github.com/theplant/appkit v0.0.0-20250317082139-cf11351af1e5
 
