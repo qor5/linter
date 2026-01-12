@@ -1,8 +1,6 @@
 module testdata
 
-go 1.23.0
-
-toolchain go1.23.4
+go 1.25
 
 require github.com/theplant/appkit v0.0.0-20250317082139-cf11351af1e5
 
