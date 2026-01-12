@@ -5,7 +5,7 @@ FROM golang:1.25.5-alpine AS builder
 RUN apk add --no-cache git make curl bash
 
 # Install golangci-lint
-ARG GOLANGCI_LINT_VERSION=v2.1.5
+ARG GOLANGCI_LINT_VERSION=v2.8.0
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/local/bin ${GOLANGCI_LINT_VERSION}
 
 # Create work directory
