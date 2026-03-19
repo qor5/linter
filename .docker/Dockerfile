@@ -26,7 +26,7 @@ RUN echo "Building custom golangci-lint with custom plugins..." && \
     echo "Custom golangci-lint built successfully"
 
 # Runtime stage - final image with Go environment
-FROM golang:1.25.5-alpine
+FROM golang:1.25-alpine
 
 # Install runtime dependencies
 RUN apk add --no-cache bash sed grep git
