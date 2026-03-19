@@ -1,6 +1,6 @@
 module testdata
 
-go 1.25.5
+go 1.25.8
 
 require gorm.io/gorm v1.30.1
 
